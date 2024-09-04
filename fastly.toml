@@ -1,0 +1,29 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = ["paul@rudin.co.uk"]
+cloned_from = "https://github.com/fastly/compute-starter-kit-typescript"
+description = ""
+language = "javascript"
+manifest_version = 3
+name = "vitest-example"
+service_id = ""
+
+[scripts]
+  build = "npm run build"
+  post_init = "npm install"
+
+[local_server]
+
+  [local_server.backends]
+
+    [local_server.backends.backend_a]
+      override_host = "fantasy.premierleague.com"
+      url = "https://fantasy.premierleague.com"
+
+    [local_server.config_stores.auth_store_link]
+      format = "inline-toml"
+
+    [local_server.config_stores.auth_store_link.contents]
+      auth_secret = "foo"
+      logging = "1"

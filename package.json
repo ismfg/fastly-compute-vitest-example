@@ -1,0 +1,28 @@
+{
+    "type": "module",
+    "engines": {
+        "node": "^16 || >=18"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "devDependencies": {
+        "@types/node": "^22.5.1",
+        "tsx": "^4.19.0",
+        "typescript": "^5.2.2",
+        "vite-plugin-fastly-js-compute": "^0.4.2",
+        "vitest": "^2.0.5"
+    },
+    "dependencies": {
+        "@fastly/js-compute": "^3.21.2",
+        "hono": "^4.4.9"
+    },
+    "scripts": {
+        "dev": "fastly compute serve --watch",
+        "prebuild": "tsc",
+        "build": "js-compute-runtime build/index.js bin/main.wasm",
+        "deploy": "fastly compute publish",
+        "test": "vitest",
+        "test-ci": "vitest run"
+    }
+}
